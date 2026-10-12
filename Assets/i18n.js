@@ -28,7 +28,7 @@ const TRANSLATIONS = {
         "skills.web": "Web",
         "skills.frameworks": "Frameworks & libraries",
         "skills.spoken": "Languages",
-        "skills.spoken.list": "English, Turkish, German",
+        "skills.spoken.list": "Turkish (native), English (C1), German (C1)",
         "hobbies.title": "Hobbies",
         "hobbies.text": "Sport, Traveling, Saxophone Playing"
     },
@@ -59,7 +59,7 @@ const TRANSLATIONS = {
         "skills.web": "Web",
         "skills.frameworks": "Frameworks & Bibliotheken",
         "skills.spoken": "Sprachen",
-        "skills.spoken.list": "Englisch, Türkisch, Deutsch",
+        "skills.spoken.list": "Türkisch (Muttersprache), Englisch (C1), Deutsch (C1)",
         "hobbies.title": "Hobbys",
         "hobbies.text": "Sport, Reisen, Saxophon spielen"
     }
