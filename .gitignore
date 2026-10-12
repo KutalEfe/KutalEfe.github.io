@@ -1,0 +1,5 @@
+# IDE settings
+.idea/
+
+# Bootstrap practice pages, kept locally only
+playground/

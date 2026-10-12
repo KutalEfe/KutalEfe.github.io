@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kutal Efe Baykal - CV</title>
+    <meta name="description" content="CV of Kutal Efe Baykal: Computer Science student and developer with internship experience in enterprise Java.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Kutal Efe Baykal - CV">
+    <meta property="og:description" content="Computer Science student and developer with internship experience in enterprise Java.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230d6efd'/%3E%3Ctext x='50' y='66' font-family='Arial' font-size='46' font-weight='bold' fill='white' text-anchor='middle'%3EKB%3C/text%3E%3C/svg%3E">
+    <script>
+        // Runs before the first paint: applies the theme without a light-mode flash,
+        // and marks that JS is available so scroll-reveal elements may start hidden.
+        (function () {
+            var root = document.documentElement;
+            var saved = null;
+            try { saved = localStorage.getItem('theme'); } catch (e) {}
+            var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+            root.classList.add('js');
+            root.classList.toggle('dark-mode', dark);
+        })();
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Assets/style.css">
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<header>
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">Kutal Efe Baykal</a>
+        <button id="nav-toggle" class="nav-toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+        </button>
+        <ul id="nav-links" class="nav-links">
+            <li><a href="#" aria-current="page" data-i18n="nav.home">Home</a></li>
+            <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+            <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="#education" data-i18n="nav.education">Education</a></li>
+            <li><a href="https://www.linkedin.com/in/kutal-efe-baykal-a69591259" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+    </nav>
+</header>
+
+<button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode" aria-pressed="false">
+    <span id="toggle-icon">🌙</span>
+</button>
+
+<button id="lang-toggle" class="theme-btn lang-btn" aria-label="Switch language">DE</button>
+
+<div class="intro-space" data-i18n="intro">Scroll Down to Reveal My CV!</div>
+
+<main class="content">
+    <div class="print-header">
+        <h1>Kutal Efe Baykal</h1>
+        <p>linkedin.com/in/kutal-efe-baykal-a69591259</p>
+    </div>
+
+    <h2 class="reveal" id="summary" data-i18n="summary.title">Professional Summary</h2>
+    <p class="reveal" data-i18n="summary.text">Highly motivated Computer Science student and developer with internship experience in enterprise Java.</p>
+
+    <h2 class="reveal" id="experience" data-i18n="experience.title">Work Experience</h2>
+    <div class="entry reveal">
+        <h3 class="entry-title"><span data-i18n="experience.san.role">Internship</span> · SAN Tourism Software Group</h3>
+        <span class="entry-date">YYYY – YYYY</span>
+        <ul>
+            <li data-i18n="experience.san.1">Worked in the team behind the SAN flight app, a platform that sells affordable flight tickets to tourism agencies.</li>
+            <li data-i18n="experience.san.2">Gained first-hand insight into how a large software company plans, organises and delivers its work.</li>
+            <li data-i18n="experience.san.3">Worked with enterprise Java in a production environment, which prepared me for a Java Spring Boot boot camp.</li>
+        </ul>
+    </div>
+
+    <h2 class="reveal" id="projects" data-i18n="projects.title">Projects</h2>
+    <div class="entry reveal">
+        <h3 class="entry-title" data-i18n="projects.cv.name">Personal CV Website</h3>
+        <p data-i18n="projects.cv.text">This website: a responsive CV with a light/dark theme that follows the system setting, scroll animations, an interactive particle background and an English/German language switch.</p>
+        <p class="entry-tech">HTML5 · CSS3 · JavaScript · particles.js</p>
+    </div>
+
+    <h2 class="reveal" id="education" data-i18n="education.title">Education</h2>
+    <div class="entry reveal">
+        <h3 class="entry-title" data-i18n="education.tud">Computer Science (Informatik), TU Dortmund University</h3>
+        <span class="entry-date">YYYY – YYYY</span>
+    </div>
+    <div class="entry reveal">
+        <h3 class="entry-title" data-i18n="education.akdeniz">Computer Science, Akdeniz State University</h3>
+        <span class="entry-date">YYYY – YYYY</span>
+    </div>
+
+    <h2 class="reveal" id="skills" data-i18n="skills.title">Skills</h2>
+    <ul class="reveal skill-groups">
+        <li><strong data-i18n="skills.languages">Programming languages</strong>: Java, Kotlin, Python, C, Assembly, SQL</li>
+        <li><strong data-i18n="skills.web">Web</strong>: HTML5, CSS3, JavaScript</li>
+        <li><strong data-i18n="skills.frameworks">Frameworks &amp; libraries</strong>: Spring Boot, Bootstrap</li>
+    </ul>
+
+    <h2 class="reveal" id="hobbies" data-i18n="hobbies.title">Hobbies</h2>
+    <p class="reveal" data-i18n="hobbies.text">Sport, Traveling, Saxophone Playing</p>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="Assets/particles_config.js"></script>
+<script src="Assets/theme.js"></script>
+<script src="Assets/i18n.js"></script>
+<script src="Assets/nav.js"></script>
+<script src="Assets/scroll_reveal.js"></script>
+
+</body>
+</html>

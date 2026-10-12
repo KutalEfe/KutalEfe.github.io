@@ -1,0 +1,307 @@
+/* Theme colors: light mode by default.
+   The dark-mode class sits on <html> so the inline script in <head> can set it before the first paint. */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #212529;
+    --accent-color: #0d6efd;
+    --navbar-bg: #8bb9fe;
+}
+
+html.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --accent-color: #bb86fc;
+    --navbar-bg: #146c43;
+}
+
+/* Base styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h2,
+h3 {
+    margin: 0 0 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+p,
+ul {
+    margin: 0 0 1rem;
+}
+
+a {
+    color: var(--accent-color);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background-color: var(--navbar-bg);
+    transition: background-color 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+    opacity: 1;
+}
+
+.nav-links a[aria-current="page"] {
+    font-weight: 600;
+}
+
+/* Hamburger button, only shown on small screens */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.nav-toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin: 5px 0;
+    background-color: var(--text-color);
+}
+
+@media (max-width: 991.98px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-basis: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem 0;
+    }
+
+    .nav-links.is-open {
+        display: flex;
+    }
+}
+
+/* Theme toggle button */
+.theme-btn {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.theme-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Language button: same look as the theme button, placed below it */
+.lang-btn {
+    top: 140px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Scroll reveal: elements are only hidden when JS is running (the 'js' class),
+   so the CV stays readable if scripts fail to load. */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .theme-btn,
+    .theme-btn:hover {
+        transition: none;
+        transform: none;
+    }
+}
+
+/* Layout */
+.intro-space {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    text-align: center;
+    font-size: 2em;
+}
+
+.content {
+    padding: 50px;
+}
+
+.content h2 {
+    margin-top: 50px;
+}
+
+@media (max-width: 575.98px) {
+    .content {
+        padding: 20px;
+    }
+}
+
+/* CV entries (job, project, degree) */
+.entry {
+    margin-bottom: 1.5rem;
+}
+
+.entry-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.entry-date,
+.entry-tech {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+}
+
+.skill-groups {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Name and contact line, only shown when printing */
+.print-header {
+    display: none;
+}
+
+/* Moving dots background */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-color);
+    z-index: -1;
+    transition: background-color 0.3s ease;
+}
+
+/* Print: a clean black-on-white CV without the interactive parts */
+@media print {
+    html,
+    html.dark-mode {
+        --bg-color: #ffffff;
+        --text-color: #000000;
+        --accent-color: #000000;
+    }
+
+    #particles-js,
+    header,
+    .theme-btn,
+    .intro-space {
+        display: none !important;
+    }
+
+    .print-header {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .print-header h1 {
+        margin: 0;
+        font-size: 1.8rem;
+    }
+
+    .content {
+        padding: 0;
+    }
+
+    body {
+        font-size: 10.5pt;
+    }
+
+    .content h2 {
+        margin-top: 1.2rem;
+        font-size: 1.4rem;
+        break-after: avoid;
+    }
+
+    .js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .entry {
+        break-inside: avoid;
+    }
+}
