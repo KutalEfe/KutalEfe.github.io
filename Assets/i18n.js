@@ -66,7 +66,7 @@ const TRANSLATIONS = {
 };
 const LANG_KEY = 'lang';
 
-const langBtn = document.getElementById('lang-toggle');
+const langButtons = document.querySelectorAll('.lang-option');
 
 function getSavedLang() {
     try {
@@ -91,16 +91,19 @@ function applyLanguage(lang) {
     document.querySelectorAll('[data-i18n]').forEach((el) => {
         el.textContent = dict[el.dataset.i18n];
     });
-    // The button shows the language you can switch to.
-    langBtn.textContent = lang === 'de' ? 'EN' : 'DE';
+    langButtons.forEach((btn) => {
+        btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
+    });
 }
 
 const browserLang = (navigator.language || '').toLowerCase().startsWith('de') ? 'de' : 'en';
 let currentLang = TRANSLATIONS[getSavedLang()] ? getSavedLang() : browserLang;
 applyLanguage(currentLang);
 
-langBtn.addEventListener('click', () => {
-    currentLang = currentLang === 'de' ? 'en' : 'de';
-    saveLang(currentLang);
-    applyLanguage(currentLang);
+langButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        currentLang = btn.dataset.lang;
+        saveLang(currentLang);
+        applyLanguage(currentLang);
+    });
 });

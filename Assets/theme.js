@@ -5,7 +5,6 @@ const THEME_KEY = 'theme';
 
 const root = document.documentElement;
 const toggleBtn = document.getElementById('theme-toggle');
-const toggleIcon = document.getElementById('toggle-icon');
 const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
 
 function getSavedTheme() {
@@ -26,7 +25,6 @@ function saveTheme(theme) {
 
 function applyTheme(theme) {
     root.classList.toggle('dark-mode', theme === 'dark');
-    toggleIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
     toggleBtn.setAttribute('aria-pressed', String(theme === 'dark'));
     setParticlesColor(PARTICLE_COLORS[theme]);
 }

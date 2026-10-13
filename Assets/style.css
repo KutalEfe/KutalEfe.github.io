@@ -62,7 +62,7 @@ a {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    gap: 0 1.5rem;
     padding: 0.5rem 1rem;
     background-color: var(--navbar-bg);
     transition: background-color 0.3s ease;
@@ -79,7 +79,7 @@ a {
     display: flex;
     gap: 1.5rem;
     list-style: none;
-    margin: 0;
+    margin: 0 0 0 auto;
     padding: 0;
 }
 
@@ -96,6 +96,82 @@ a {
 
 .nav-links a[aria-current="page"] {
     font-weight: 600;
+}
+
+/* Language and theme controls: styled like the nav links, set apart by a thin divider */
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 1.5rem;
+    border-left: 1px solid color-mix(in srgb, var(--text-color) 30%, transparent);
+}
+
+.lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.lang-option,
+.theme-toggle {
+    background: none;
+    border: 0;
+    padding: 0.25rem;
+    font: inherit;
+    color: var(--text-color);
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.lang-option:hover,
+.theme-toggle:hover,
+.lang-option[aria-pressed="true"] {
+    opacity: 1;
+}
+
+.lang-option[aria-pressed="true"] {
+    font-weight: 600;
+    cursor: default;
+}
+
+.lang-divider {
+    opacity: 0.4;
+}
+
+.theme-toggle {
+    display: grid;
+}
+
+/* Both icons share one grid cell and cross-fade; the class on <html> picks the visible one */
+.theme-toggle svg {
+    grid-area: 1 / 1;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.icon-sun,
+html.dark-mode .icon-moon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.6);
+}
+
+html.dark-mode .icon-sun {
+    opacity: 1;
+    transform: none;
+}
+
+.lang-option:focus-visible,
+.theme-toggle:focus-visible,
+.nav-toggle:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 /* Hamburger button, only shown on small screens */
@@ -118,10 +194,20 @@ a {
 @media (max-width: 991.98px) {
     .nav-toggle {
         display: block;
+        order: 1;
+    }
+
+    /* Controls stay in the bar next to the hamburger; the links drop below */
+    .nav-controls {
+        margin-left: auto;
+        padding-left: 0;
+        border-left: 0;
     }
 
     .nav-links {
         display: none;
+        order: 2;
+        margin-left: 0;
         flex-basis: 100%;
         flex-direction: column;
         gap: 0.5rem;
@@ -131,35 +217,6 @@ a {
     .nav-links.is-open {
         display: flex;
     }
-}
-
-/* Theme toggle button */
-.theme-btn {
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    background-color: var(--accent-color);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    transition: transform 0.2s, background-color 0.3s;
-}
-
-.theme-btn:hover {
-    transform: scale(1.2);
-}
-
-/* Language button: same look as the theme button, placed below it */
-.lang-btn {
-    top: 140px;
-    font-size: 1rem;
-    font-weight: 600;
 }
 
 /* Scroll reveal: elements are only hidden when JS is running (the 'js' class),
@@ -182,10 +239,8 @@ a {
         transition: none;
     }
 
-    .theme-btn,
-    .theme-btn:hover {
+    .theme-toggle svg {
         transition: none;
-        transform: none;
     }
 }
 
@@ -266,7 +321,6 @@ a {
 
     #particles-js,
     header,
-    .theme-btn,
     .intro-space {
         display: none !important;
     }
